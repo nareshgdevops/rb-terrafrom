@@ -3,9 +3,28 @@ on: [workflow_dispatch]
 jobs:
   TerraformApply:
     runs-on: self-hosted
+    env:
+      vault_token: ${{ secrets.VAULT_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+      - name: Import Secrets
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: http://vault.nareshdevops1218.online:8200/
+          token: ${{ secrets.VAULT_TOKEN }}
+          secrets: |
+            secret/data/azure-service-priniciple AZURE_SUBSCRIPTION_ID | AWS_ACCESS_KEY_ID ;
+            secret/data/azure-service-priniciple AZURE_CLIENT_ID | AWS_SECRET_ACCESS_KEY ;
+            secret/data/azure-service-priniciple AZURE_SECRET | AWS_ACCESS_KEY_ID ;
+            secret/data/azure-service-priniciple AZURE_TENANT | AWS_SECRET_ACCESS_KEY ;
       - name: Terraform Apply
         run: |
+          export AZURE_SUBSCRIPTION_ID="${{ env.AZURE_SUBSCRIPTION_ID }}"
+          export AZURE_CLIENT_ID="${{ env.AZURE_CLIENT_ID }}"
+          export AZURE_SECRET="${{ env.AZURE_SECRET }}"
+          export AZURE_TENANT="${{ env.AZURE_TENANT }}"
           ls -l
           make dev-apply token=${vault_token}
+          
+          
