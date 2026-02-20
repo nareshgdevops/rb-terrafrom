@@ -18,7 +18,7 @@ jobs:
             roboshop-infra/data/azure-service-priniciple AZURE_CLIENT_ID | AZURE_CLIENT_ID ;
             roboshop-infra/data/azure-service-priniciple AZURE_SECRET | AZURE_SECRET ;
             roboshop-infra/data/azure-service-priniciple AZURE_TENANT | AZURE_TENANT ;
-      - name: Terraform Apply
+      - name: Terraform Destroy
         run: |
           export AZURE_SUBSCRIPTION_ID="${{ env.AZURE_SUBSCRIPTION_ID }}"
           export AZURE_CLIENT_ID="${{ env.AZURE_CLIENT_ID }}"
