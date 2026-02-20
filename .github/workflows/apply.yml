@@ -14,10 +14,10 @@ jobs:
           url: http://vault.nareshdevops1218.online:8200/
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            roboshop-infra/data/azure-service-priniciple AZURE_SUBSCRIPTION_ID | AWS_ACCESS_KEY_ID ;
-            roboshop-infra/data/azure-service-priniciple AZURE_CLIENT_ID | AWS_SECRET_ACCESS_KEY ;
-            roboshop-infra/data/azure-service-priniciple AZURE_SECRET | AWS_ACCESS_KEY_ID ;
-            roboshop-infra/data/azure-service-priniciple AZURE_TENANT | AWS_SECRET_ACCESS_KEY ;
+            roboshop-infra/data/azure-service-priniciple AZURE_SUBSCRIPTION_ID | AZURE_SUBSCRIPTION_ID ;
+            roboshop-infra/data/azure-service-priniciple AZURE_CLIENT_ID | AZURE_CLIENT_ID ;
+            roboshop-infra/data/azure-service-priniciple AZURE_SECRET | AZURE_SECRET ;
+            roboshop-infra/data/azure-service-priniciple AZURE_TENANT | AZURE_TENANT ;
       - name: Terraform Apply
         run: |
           export AZURE_SUBSCRIPTION_ID="${{ env.AZURE_SUBSCRIPTION_ID }}"
