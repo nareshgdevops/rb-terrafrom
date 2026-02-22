@@ -23,6 +23,12 @@ resource "azurerm_kubernetes_cluster" "aks" {
   aci_connector_linux {
     subnet_name = var.subnet_id
   }
+
+  lifecycle {
+    ignore_changes = [
+      default_node_pool
+    ]
+  }
 }
 
 resource "azurerm_kubernetes_cluster_node_pool" "main" {
