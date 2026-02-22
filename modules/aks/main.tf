@@ -17,7 +17,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   network_profile {
     network_plugin = "azure"
-    # Further customize CIDRs if needed, e.g., service_cidr, dns_service_ip
   }
 
   aci_connector_linux {
