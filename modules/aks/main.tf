@@ -29,6 +29,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
       upgrade_settings
     ]
   }
+
 }
 
 resource "azurerm_kubernetes_cluster_node_pool" "main" {
