@@ -25,8 +25,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   lifecycle {
     ignore_changes = [
-      default_node_pool,
-      upgrade_settings
+      default_node_pool
     ]
   }
 
