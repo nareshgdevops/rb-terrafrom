@@ -25,7 +25,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   lifecycle {
     ignore_changes = [
-      default_node_pool
+      default_node_pool,
+      upgrade_settings
     ]
   }
 }
@@ -41,4 +42,10 @@ resource "azurerm_kubernetes_cluster_node_pool" "main" {
   min_count             = each.value["min_count"]
   max_count             = each.value["max_count"]
   node_labels           = each.value["node_labels"]
+
+  lifecycle {
+    ignore_changes = [
+      upgrade_settings
+    ]
+  }
 }
