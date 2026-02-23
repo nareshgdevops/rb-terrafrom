@@ -13,9 +13,9 @@ resource null_resource "kubeconfig" {
 
   provisioner "local-exec" {
     command = <<EOF
-    az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_SECRET --tenant $AZURE_TENANT
-    az aks get-credentials --name ${var.name} --resource-group ${var.rg_name} --overwrite-existing"
-    EOF
+az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_SECRET --tenant $AZURE_TENANT
+az aks get-credentials --name ${var.name} --resource-group ${var.rg_name} --overwrite-existing
+EOF
   }
 }
 
