@@ -11,6 +11,10 @@ resource null_resource "kubeconfig" {
     azurerm_kubernetes_cluster.aks
   ]
 
+  triggers = {
+    time = timestamp()
+  }
+
   provisioner "local-exec" {
     command = <<EOF
 az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_SECRET --tenant $AZURE_TENANT
