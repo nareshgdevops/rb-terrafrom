@@ -61,6 +61,6 @@ module "aks" {
   default_node_pool = each.value["default_node_pool"]
 }
 
-output "test" {
-  value = nonsensitive(module.aks)
-}
+# output "test" {
+#   value = nonsensitive(module.aks)
+# }
