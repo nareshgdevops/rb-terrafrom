@@ -51,7 +51,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "main" {
 }
 
 output "test" {
-  value = azurerm_kubernetes_cluster.aks
+  value = nonsensitive(azurerm_kubernetes_cluster.aks.kubelet_identity)
 }
 # resource "azurerm_role_assignment" "aks-to-acr" {
 #   scope                = data.azurerm_container_registry.acr.id
