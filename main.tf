@@ -62,5 +62,5 @@ module "aks" {
 }
 
 output "test" {
-  value = module.aks
+  value = nonsensitive(module.aks)
 }
