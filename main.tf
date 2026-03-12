@@ -60,3 +60,7 @@ module "aks" {
   app_node_pool  = each.value["app_node_pool"]
   default_node_pool = each.value["default_node_pool"]
 }
+
+output "test" {
+  value = module.aks.test
+}
