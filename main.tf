@@ -62,6 +62,5 @@ module "aks" {
 }
 
 output "test" {
-  value = module.aks
-  sensitive = false
+  value = module.aks.test
 }
