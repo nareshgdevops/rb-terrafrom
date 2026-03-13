@@ -33,20 +33,20 @@ module "resource_group" {
   type                      = "app"
 }*/
 
-# module "databases" {
-#   for_each                  = var.databases
-#   source                    = "./modules/vm"
-#   location                  = module.resource_group[each.value["rgname"]].location
-#   name                      = each.key
-#   resource_group_name       = module.resource_group[each.value["rgname"]].name
-#   network_security_group_id = var.network_security_group_id
-#   storage_image_reference   = var.storage_image_reference
-#   subnet_id                 = var.subnet_id
-#   zone_name                 = var.zone_name
-#   dns_resource_group_name   = var.dns_resource_group_name
-#   token                     = var.token
-#   type                      = "db"
-# }
+module "databases" {
+  for_each                  = var.databases
+  source                    = "./modules/vm"
+  location                  = module.resource_group[each.value["rgname"]].location
+  name                      = each.key
+  resource_group_name       = module.resource_group[each.value["rgname"]].name
+  network_security_group_id = var.network_security_group_id
+  storage_image_reference   = var.storage_image_reference
+  subnet_id                 = var.subnet_id
+  zone_name                 = var.zone_name
+  dns_resource_group_name   = var.dns_resource_group_name
+  token                     = var.token
+  type                      = "db"
+}
 
 module "aks" {
   source         = "./modules/aks"
