@@ -33,7 +33,7 @@ databases = {
     mongodb = {
       rgname = "ukwest"
     }
-    mysql = {
+    /*mysql = {
       rgname = "ukwest"
     }
     redis = {
@@ -41,7 +41,7 @@ databases = {
     }
     rabbitmq = {
       rgname = "ukwest"
-    }
+    }*/
   }
 
 rg_name = {

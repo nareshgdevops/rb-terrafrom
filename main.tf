@@ -15,7 +15,9 @@ module "vnet" {
   subnets             = each.value["subnets"]
 }
 
-
+output "vnet" {
+  value = module.vnet
+}
 
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
 /*output "rgtest" {
@@ -53,14 +55,14 @@ module "vnet" {
   resource_group_name       = module.resource_group[each.value["rgname"]].name
   network_security_group_id = var.network_security_group_id
   storage_image_reference   = var.storage_image_reference
-  subnet_id                 = var.subnet_id
+  subnet_id                 = module.vnet[each.value["vnet"]].subnet
   zone_name                 = var.zone_name
   dns_resource_group_name   = var.dns_resource_group_name
   token                     = var.token
   type                      = "db"
-}
+}*/
 
-module "aks" {
+/*module "aks" {
   source         = "./modules/aks"
   for_each       = var.aks
   name           = each.key
