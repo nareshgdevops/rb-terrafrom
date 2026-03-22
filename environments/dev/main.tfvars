@@ -31,7 +31,9 @@ applications = {
 
 databases = {
     mongodb = {
-      rgname = "ukwest"
+      rgname  = "ukwest"
+      vnet    = "main"
+      vm_size = "Standard_D2s_v3"
     }
     /*mysql = {
       rgname = "ukwest"
