@@ -52,6 +52,7 @@ rg_name = {
 
 vnet = {
   main = {
+    rgname = "ukwest"
     address_space = ["10.1.0.0/24"]
   }
 }

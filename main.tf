@@ -5,14 +5,14 @@ module "resource_group" {
   rg_name   = "${each.key}-${var.env}"
 }
 
-module "vnet" {
-  for_each            = var.vnet
-  source              = "./modules/vnet"
-  name                = "${each.key}-${var.env}"
-  location            = module.resource_group[each.value["rgname"]].location
-  resource_group_name = module.resource_group[each.value["rgname"]].name
-  address_space       = each.value["address_space"]
-}
+# module "vnet" {
+#   for_each            = var.vnet
+#   source              = "./modules/vnet"
+#   name                = "${each.key}-${var.env}"
+#   location            = module.resource_group[each.value["rgname"]].location
+#   resource_group_name = module.resource_group[each.value["rgname"]].name
+#   address_space       = each.value["address_space"]
+# }
 
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
 /*output "rgtest" {
@@ -42,7 +42,7 @@ module "vnet" {
   type                      = "app"
 }*/
 
-/*module "databases" {
+module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
@@ -68,7 +68,7 @@ module "aks" {
   subnet_id      = var.subnet_id
   app_node_pool  = each.value["app_node_pool"]
   default_node_pool = each.value["default_node_pool"]
-}*/
+}
 
 # output "test" {
 #   value = nonsensitive(module.aks)
