@@ -48,7 +48,13 @@ rg_name = {
     ukwest = {
       location = "UK West"
     }
+}
+
+vnet = {
+  main = {
+    address_space = ["10.1.0.0/24"]
   }
+}
 
 aks = {
   aks-main-dev = {
