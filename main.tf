@@ -12,7 +12,10 @@ module "vnet" {
   location            = module.resource_group[each.value["rgname"]].location
   resource_group_name = module.resource_group[each.value["rgname"]].name
   address_space       = each.value["address_space"]
+  subnets             = each.value["subnets"]
 }
+
+
 
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
 /*output "rgtest" {

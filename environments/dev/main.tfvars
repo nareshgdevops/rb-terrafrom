@@ -54,6 +54,12 @@ vnet = {
   main = {
     rgname = "ukwest"
     address_space = ["10.1.0.0/24"]
+    subnets = {
+      main = {
+        address_prefix = ["10.1.1.0/24"]
+      }
+
+    }
   }
 }
 
