@@ -94,6 +94,13 @@ resource "null_resource" "ansible" {
   depends_on = [
     azurerm_virtual_machine.vm
   ]
+
+  # Step 1: Copy the deploy key from Vault to VM
+  provisioner "file" {
+    content     = data.vault_generic_secret.roboshop-infra.data["private_key"]
+    destination = "/home/${admin_username}/.ssh/id_rsa"
+  }
+
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
