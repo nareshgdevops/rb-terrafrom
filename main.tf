@@ -75,7 +75,7 @@ module "aks" {
   location       = module.resource_group[each.value["rgname"]].location
   env            = var.env
   token          = var.token
-  subnet_id      =  module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
+  subnet_id      =  module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id[0]
   app_node_pool  = each.value["app_node_pool"]
   default_node_pool = each.value["default_node_pool"]
 }
