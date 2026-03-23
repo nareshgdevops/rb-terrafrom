@@ -106,8 +106,7 @@ resource "null_resource" "ansible" {
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
       "sudo pip3.12 install hvac",
-      "export GIT_TERMINAL_PROMPT=0",
-      "ansible-pull -i localhost, -U https://github.com/ng1218/rb-ansible.git -e app_name=${local.app_name} -e env=dev -e token=${var.token} roboshop.yml"
+      "export GIT_TERMINAL_PROMPT=0 ansible-pull -i localhost, -U https://github.com/ng1218/rb-ansible.git -e app_name=${local.app_name} -e env=dev -e token=${var.token} roboshop.yml"
     ]
   }
 }
