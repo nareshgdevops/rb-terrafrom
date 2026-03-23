@@ -63,6 +63,7 @@ module "databases" {
   token                     = var.token
   type                      = "db"
   vm_size                   = each.value["vm_size"]
+  bastion_nodes             = var.bastion_nodes
 }
 
 /*module "aks" {

@@ -9,3 +9,4 @@ variable "dns_resource_group_name" {}
 variable "token" {}
 variable "type" {}
 variable "vm_size" {}
+variable "bastion_nodes" {}
