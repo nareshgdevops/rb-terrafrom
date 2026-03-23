@@ -27,7 +27,7 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
-resource "azurerm_network_interface_security_group_association" "example" {
+/*resource "azurerm_network_interface_security_group_association" "example" {
   network_interface_id      = azurerm_network_interface.nic.id
   network_security_group_id = var.network_security_group_id
 }
@@ -88,4 +88,4 @@ resource "azurerm_dns_a_record" "dns_record" {
   resource_group_name = var.dns_resource_group_name
   ttl                 = 3
   records             = [azurerm_network_interface.nic.private_ip_address]
-}
+}*/
