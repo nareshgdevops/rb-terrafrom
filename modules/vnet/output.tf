@@ -1,3 +1,3 @@
-output "vnet" {
+output "subnet" {
   value = azurerm_subnet.subnet
 }
