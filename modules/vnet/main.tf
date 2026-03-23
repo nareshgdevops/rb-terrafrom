@@ -12,3 +12,17 @@ resource "azurerm_subnet" "subnet" {
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = each.value["address_prefix"]
 }
+
+resource "azurerm_virtual_network_peering" "here-to-tools" {
+  name                      = "${var.name}-${var.env}-conn-to-tools"
+  resource_group_name       = var.resource_group_name
+  virtual_network_name      = azurerm_virtual_network.main
+  remote_virtual_network_id = var.tools_vnet_resource_id
+}
+
+resource "azurerm_virtual_network_peering" "tools-to-here" {
+  name                      = "conn-to-${var.name}-${var.env}"
+  resource_group_name       = var.resource_group_name
+  virtual_network_name      = data.azurerm_virtual_network.tools-vnet.name
+  remote_virtual_network_id = azurerm_virtual_network.main.id
+}

@@ -6,13 +6,15 @@ module "resource_group" {
 }
 
 module "vnet" {
-  for_each            = var.vnet
-  source              = "./modules/vnet"
-  name                = "${each.key}-${var.env}"
-  location            = module.resource_group[each.value["rgname"]].location
-  resource_group_name = module.resource_group[each.value["rgname"]].name
-  address_space       = each.value["address_space"]
-  subnets             = each.value["subnets"]
+  for_each                = var.vnet
+  source                  = "./modules/vnet"
+  name                    = "${each.key}-${var.env}"
+  location                = module.resource_group[each.value["rgname"]].location
+  resource_group_name     = module.resource_group[each.value["rgname"]].name
+  address_space           = each.value["address_space"]
+  subnets                 = each.value["subnets"]
+  tools_vnet_resource_id  = var.tools_vnet_resource_id
+  env                     = var.env
 }
 
 output "vnet" {
