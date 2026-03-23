@@ -36,17 +36,29 @@ databases = {
       vnet    = "main"
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
-      port    = "27017"
+      port    = 27017
     }
-    /*mysql = {
+    mysql = {
       rgname = "ukwest"
+      vnet    = "main"
+      subnet  = "main"
+      vm_size = "Standard_D2s_v3"
+      port    = 3306
     }
     redis = {
       rgname = "ukwest"
+      vnet    = "main"
+      subnet  = "main"
+      vm_size = "Standard_D2s_v3"
+      port    = 6379
     }
     rabbitmq = {
       rgname = "ukwest"
-    }*/
+      vnet    = "main"
+      subnet  = "main"
+      vm_size = "Standard_D2s_v3"
+      port    = 5672
+    }
   }
 
 rg_name = {
