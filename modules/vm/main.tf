@@ -104,7 +104,7 @@ resource "null_resource" "ansible" {
       type        = "ssh"
       host        = azurerm_network_interface.nic.private_ip_address
       user        = data.vault_generic_secret.roboshop-infra.data["username"]
-      password    = data.vault_generic_secret.roboshop-infra.data["username"]
+      password    = data.vault_generic_secret.roboshop-infra.data["password"]
     }
   }
 
@@ -112,7 +112,7 @@ resource "null_resource" "ansible" {
     connection {
       type        = "ssh"
       user        = data.vault_generic_secret.roboshop-infra.data["username"]
-      password    = data.vault_generic_secret.roboshop-infra.data["username"]
+      password    = data.vault_generic_secret.roboshop-infra.data["password"]
       host        = azurerm_network_interface.nic.private_ip_address
     }
 
