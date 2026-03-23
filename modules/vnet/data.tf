@@ -1,4 +1,4 @@
 data "azurerm_virtual_network" "tools-vnet" {
-  name                = "main"
+  name                = "vnet-ukwest"
   resource_group_name = "ngresources"
 }

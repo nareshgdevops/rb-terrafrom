@@ -16,7 +16,7 @@ resource "azurerm_subnet" "subnet" {
 resource "azurerm_virtual_network_peering" "here-to-tools" {
   name                      = "${var.name}-${var.env}-conn-to-tools"
   resource_group_name       = var.resource_group_name
-  virtual_network_name      = azurerm_virtual_network.main
+  virtual_network_name      = azurerm_virtual_network.main.name
   remote_virtual_network_id = var.tools_vnet_resource_id
 }
 
