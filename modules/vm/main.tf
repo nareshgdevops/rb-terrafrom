@@ -38,7 +38,7 @@ resource "azurerm_network_security_group" "nsg" {
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "27017"
+    destination_port_range     = "22"
     source_address_prefixes    = var.bastion_nodes
     destination_address_prefix = "*"
   }
