@@ -47,7 +47,7 @@ output "subnet_id" {
   type                      = "app"
 }*/
 
-module "databases" {
+/*module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
@@ -61,7 +61,7 @@ module "databases" {
   token                     = var.token
   type                      = "db"
   vm_size                   = each.value["vm_size"]
-}
+}*/
 
 /*module "aks" {
   source         = "./modules/aks"
