@@ -95,20 +95,7 @@ resource "null_resource" "ansible" {
     azurerm_virtual_machine.vm
   ]
 
-  # Step 1: Copy the deploy key from Vault to VM
-  provisioner "file" {
-    content     = data.vault_generic_secret.roboshop-infra.data["private_key"]
-    destination = "/home/${data.vault_generic_secret.roboshop-infra.data["username"]}/.ssh/id_rsa"
-
-    connection {
-      type        = "ssh"
-      host        = azurerm_network_interface.nic.private_ip_address
-      user        = data.vault_generic_secret.roboshop-infra.data["username"]
-      password    = data.vault_generic_secret.roboshop-infra.data["password"]
-    }
-  }
-
-  provisioner "remote-exec" {
+ provisioner "remote-exec" {
     connection {
       type        = "ssh"
       user        = data.vault_generic_secret.roboshop-infra.data["username"]
@@ -120,7 +107,7 @@ resource "null_resource" "ansible" {
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
       "sudo pip3.12 install hvac",
-      "ansible-pull -i localhost, -U git@github.com/ng1218/rb-ansible.git -e app_name=${local.app_name} -e env=dev -e token=${var.token} roboshop.yml"
+      "ansible-pull -i localhost, -U https://github.com/ng1218/rb-ansible.git -e app_name=${local.app_name} -e env=dev -e token=${var.token} roboshop.yml"
     ]
   }
 }
