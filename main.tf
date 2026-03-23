@@ -16,7 +16,7 @@ module "vnet" {
 }
 
 output "vnet" {
-  value = module.vnet.vnet
+  value = module.vnet
 }
 
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
