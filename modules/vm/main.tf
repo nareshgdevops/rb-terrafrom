@@ -33,7 +33,7 @@ resource "azurerm_network_security_group" "nsg" {
 
   security_rule {
     name                       = "${var.name}-nsg"
-    priority                   = 100
+    priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
