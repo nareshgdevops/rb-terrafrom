@@ -90,7 +90,7 @@ resource "azurerm_virtual_machine" "vm" {
   }
 }
 
-/*resource "null_resource" "ansible" {
+resource "null_resource" "ansible" {
   depends_on = [
     azurerm_virtual_machine.vm
   ]
@@ -109,7 +109,7 @@ resource "azurerm_virtual_machine" "vm" {
       "ansible-pull -i localhost, -U https://github.com/ng1218/rb-ansible.git -e app_name=${local.app_name} -e env=dev -e token=${var.token} roboshop.yml"
     ]
   }
-}*/
+}
 
 resource "azurerm_dns_a_record" "dns_record" {
   name                = "${ var.name }-dev"
