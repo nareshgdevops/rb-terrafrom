@@ -90,14 +90,6 @@ resource "azurerm_virtual_machine" "vm" {
   }
 }
 
-variable "vm_user" {
-  default = data.vault_generic_secret.roboshop-infra.data["username"]
-}
-
-variable "vm_password" {
-  default = data.vault_generic_secret.roboshop-infra.data["username"]
-}
-
 resource "null_resource" "ansible" {
   depends_on = [
     azurerm_virtual_machine.vm
@@ -106,14 +98,14 @@ resource "null_resource" "ansible" {
   # Step 1: Copy the deploy key from Vault to VM
   provisioner "file" {
     content     = data.vault_generic_secret.roboshop-infra.data["private_key"]
-    destination = "/home/${var.vm_user}/.ssh/id_rsa"
+    destination = "/home/${data.vault_generic_secret.roboshop-infra.data["username"]}/.ssh/id_rsa"
   }
 
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
-      user        = var.vm_user
-      password    = var.vm_password
+      user        = data.vault_generic_secret.roboshop-infra.data["username"]
+      password    = data.vault_generic_secret.roboshop-infra.data["username"]
       host        = azurerm_network_interface.nic.private_ip_address
     }
 
