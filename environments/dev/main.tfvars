@@ -33,6 +33,7 @@ databases = {
     mongodb = {
       rgname  = "ukwest"
       vnet    = "main"
+      subnet  = "main"
       vm_size = "Standard_D2s_v3"
     }
     /*mysql = {

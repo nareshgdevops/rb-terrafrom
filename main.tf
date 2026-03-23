@@ -16,7 +16,7 @@ module "vnet" {
 }
 
 output "subnet_id" {
-  value = module.vnet["main"].subnet_id["main"].id
+  value = module.vnet
 }
 
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
@@ -47,7 +47,7 @@ output "subnet_id" {
   type                      = "app"
 }*/
 
-/*module "databases" {
+module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
@@ -55,13 +55,13 @@ output "subnet_id" {
   resource_group_name       = module.resource_group[each.value["rgname"]].name
   network_security_group_id = var.network_security_group_id
   storage_image_reference   = var.storage_image_reference
-  subnet_id                 = module.vnet[each.value["vnet"]].vnet.subnet[0].id
+  subnet_id                 = module.vnet[each.value["vnet"]].subnet_id[each.value["subnet"]].id
   zone_name                 = var.zone_name
   dns_resource_group_name   = var.dns_resource_group_name
   token                     = var.token
   type                      = "db"
   vm_size                   = each.value["vm_size"]
-}*/
+}
 
 /*module "aks" {
   source         = "./modules/aks"
