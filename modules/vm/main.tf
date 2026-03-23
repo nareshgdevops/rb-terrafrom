@@ -23,13 +23,30 @@ resource "azurerm_network_interface" "nic" {
     name                          = var.name
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
-    # public_ip_address_id          = azurerm_public_ip.publicip.id
   }
 }
 
-/*resource "azurerm_network_interface_security_group_association" "example" {
+resource "azurerm_network_security_group" "nsg" {
+  name                = "${var.name}-nsg"
+  location            = var.location
+  resource_group_name = var.resource_group_name
+
+  security_rule {
+    name                       = "ssh"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "22"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
+resource "azurerm_network_interface_security_group_association" "example" {
   network_interface_id      = azurerm_network_interface.nic.id
-  network_security_group_id = var.network_security_group_id
+  network_security_group_id = azurerm_network_security_group.nsg
 }
 
 resource "azurerm_virtual_machine" "vm" {
@@ -61,7 +78,7 @@ resource "azurerm_virtual_machine" "vm" {
   }
 }
 
-resource "null_resource" "ansible" {
+/*resource "null_resource" "ansible" {
   depends_on = [
     azurerm_virtual_machine.vm
   ]
@@ -80,7 +97,7 @@ resource "null_resource" "ansible" {
       "ansible-pull -i localhost, -U https://github.com/ng1218/rb-ansible.git -e app_name=${local.app_name} -e env=dev -e token=${var.token} roboshop.yml"
     ]
   }
-}
+}*/
 
 resource "azurerm_dns_a_record" "dns_record" {
   name                = "${ var.name }-dev"
@@ -88,4 +105,4 @@ resource "azurerm_dns_a_record" "dns_record" {
   resource_group_name = var.dns_resource_group_name
   ttl                 = 3
   records             = [azurerm_network_interface.nic.private_ip_address]
-}*/
+}
