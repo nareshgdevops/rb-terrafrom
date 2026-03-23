@@ -43,7 +43,7 @@ databases = {
       vnet    = "main"
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
-      dest_port_ranges    = ["22", "3306"]
+      port    = ["22", "3306"]
     }
     redis = {
       rgname = "ukwest"
