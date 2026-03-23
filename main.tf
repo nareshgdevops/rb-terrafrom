@@ -15,7 +15,7 @@ module "vnet" {
   subnets             = each.value["subnets"]
 }
 
-output "subnet_id" {
+output "vnet" {
   value = module.vnet
 }
 
