@@ -36,7 +36,7 @@ databases = {
       vnet    = "main"
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
-      port    = ["27017"]
+      port    = ["22", "27017"]
     }
     mysql = {
       rgname = "ukwest"
@@ -50,14 +50,14 @@ databases = {
       vnet    = "main"
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
-      port    = ["6379"]
+      port    = ["22", "6379"]
     }
     rabbitmq = {
       rgname = "ukwest"
       vnet    = "main"
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
-      port    = ["5672"]
+      port    = ["22", "5672"]
     }
   }
 
