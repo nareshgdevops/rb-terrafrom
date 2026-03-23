@@ -38,8 +38,8 @@ resource "azurerm_network_security_group" "nsg" {
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "22"
-    source_address_prefixes    = var.bastion_nodes
+    destination_port_range     = var.port
+    source_address_prefixes    = var.subnet_cidr
     destination_address_prefix = "*"
   }
 

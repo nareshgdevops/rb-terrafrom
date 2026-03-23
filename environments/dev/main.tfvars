@@ -36,6 +36,7 @@ databases = {
       vnet    = "main"
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
+      port    = "27017"
     }
     /*mysql = {
       rgname = "ukwest"
@@ -88,4 +89,4 @@ aks = {
   }
 }
 
-bastion_nodes = ["172.16.0.100", "172.16.0.10"]
+#bastion_nodes = ["172.16.0.100", "172.16.0.10"]

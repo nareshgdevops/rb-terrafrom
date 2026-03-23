@@ -58,12 +58,13 @@ module "databases" {
   network_security_group_id = var.network_security_group_id
   storage_image_reference   = var.storage_image_reference
   subnet_id                 = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
+  subnet_cidr               = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].address_prefixes
   zone_name                 = var.zone_name
   dns_resource_group_name   = var.dns_resource_group_name
   token                     = var.token
   type                      = "db"
   vm_size                   = each.value["vm_size"]
-  bastion_nodes             = var.bastion_nodes
+  port                      = each.value["port"]
 }
 
 /*module "aks" {
