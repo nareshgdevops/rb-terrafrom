@@ -99,6 +99,13 @@ resource "null_resource" "ansible" {
   provisioner "file" {
     content     = data.vault_generic_secret.roboshop-infra.data["private_key"]
     destination = "/home/${data.vault_generic_secret.roboshop-infra.data["username"]}/.ssh/id_rsa"
+
+    connection {
+      type        = "ssh"
+      host        = azurerm_network_interface.nic.private_ip_address
+      user        = data.vault_generic_secret.roboshop-infra.data["username"]
+      password    = data.vault_generic_secret.roboshop-infra.data["username"]
+    }
   }
 
   provisioner "remote-exec" {
