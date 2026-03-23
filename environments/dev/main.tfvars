@@ -31,7 +31,7 @@ applications = {
   }
 
 databases = {
-    /*mongodb = {
+    mongodb = {
       rgname  = "ukwest"
       vnet    = "main"
       subnet  = "main"
@@ -51,7 +51,7 @@ databases = {
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
       port    = ["22", "6379"]
-    }*/
+    }
     rabbitmq = {
       rgname = "ukwest"
       vnet    = "main"
