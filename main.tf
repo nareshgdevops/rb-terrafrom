@@ -16,7 +16,7 @@ module "vnet" {
 }
 
 output "subnet_id" {
-  value = module.vnet
+  value = module.vnet["main"]
 }
 
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
