@@ -22,7 +22,7 @@ resource "azurerm_virtual_network_peering" "here-to-tools" {
 
 resource "azurerm_virtual_network_peering" "tools-to-here" {
   name                      = "conn-to-${var.name}-${var.env}"
-  resource_group_name       = var.resource_group_name
+  resource_group_name       = data.azurerm_virtual_network.tools-vnet.resource_group_name
   virtual_network_name      = data.azurerm_virtual_network.tools-vnet.name
   remote_virtual_network_id = azurerm_virtual_network.main.id
 }
