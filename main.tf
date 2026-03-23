@@ -15,8 +15,8 @@ module "vnet" {
   subnets             = each.value["subnets"]
 }
 
-output "vnet" {
-  value = module.vnet
+output "subnet_id" {
+  value = module.vnet.subnet_id
 }
 
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
