@@ -107,7 +107,7 @@ resource "null_resource" "ansible" {
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
       "sudo pip3.12 install hvac",
-      "export GIT_PAT=${data.vault_generic_secret.roboshop-infra.data[\"GIT_PAT_KEY\"]}",
+      "export GIT_PAT=${data.vault_generic_secret.roboshop-infra.data["GIT_PAT_KEY"]}",
       "ansible-pull -i localhost, -U https://$GIT_PAT@github.com/ng1218/rb-ansible.git -e app_name=${local.app_name} -e env=dev -e token=${var.token} roboshop.yml"
     ]
   }
