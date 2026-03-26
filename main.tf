@@ -5,7 +5,7 @@ module "resource_group" {
   rg_name   = "${each.key}-${var.env}"
 }
 
-module "vnet" {
+/*module "vnet" {
   for_each                = var.vnet
   source                  = "./modules/vnet"
   name                    = "${each.key}-${var.env}"
@@ -19,7 +19,7 @@ module "vnet" {
 
 output "vnet" {
   value = module.vnet["main"].subnet["main"].id
-}
+}*/
 
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
 /*output "rgtest" {
@@ -55,9 +55,12 @@ module "des" {
   source                    = "./modules/des"
   location                  = module.resource_group[each.value["rgname"]].location
   resource_group_name       = module.resource_group[each.value["rgname"]].name
+  des                       = each.key
+  key-vault-name            = each.value["key-vault-name"]
+  vault-key                 = each.value["vault-key"]
 }
 
-module "databases" {
+/*module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
@@ -74,7 +77,7 @@ module "databases" {
   vm_size                   = each.value["vm_size"]
   port                      = each.value["port"]
   #disk_encryption_set_id    = module.des.each.value
-}
+}*/
 
 /*module "aks" {
   source         = "./modules/aks"

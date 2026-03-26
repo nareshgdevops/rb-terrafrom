@@ -1,5 +1,5 @@
 resource "azurerm_key_vault" "key-vault" {
-  name                        = "nareshdevops1218"
+  name                        = var.key-vault-name
   location                    = var.location
   resource_group_name         = var.resource_group_name
   tenant_id                   = data.azurerm_client_config.current.tenant_id
@@ -9,7 +9,7 @@ resource "azurerm_key_vault" "key-vault" {
 }
 
 resource "azurerm_key_vault_key" "vault-key" {
-  name         = "des-vault-key"
+  name         = var.vault-key
   key_vault_id = azurerm_key_vault.key-vault.id
   key_type     = "RSA"
   key_size     = 2048
@@ -29,7 +29,7 @@ resource "azurerm_key_vault_key" "vault-key" {
 }
 
 resource "azurerm_disk_encryption_set" "des" {
-  name                  = "des"
+  name                  = var.des
   location              = var.location
   resource_group_name   = var.resource_group_name
   key_vault_key_id      = azurerm_key_vault_key.vault-key.id

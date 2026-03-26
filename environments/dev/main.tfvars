@@ -30,35 +30,35 @@ applications = {
     }
   }
 
-databases = {
-    mongodb = {
-      rgname  = "ukwest"
-      vnet    = "main"
-      subnet  = "main"
-      vm_size = "Standard_D2s_v3"
-      port    = ["22", "27017"]
-    }
-    /*mysql = {
-      rgname = "ukwest"
-      vnet    = "main"
-      subnet  = "main"
-      vm_size = "Standard_D2s_v3"
-      port    = ["22", "3306"]
-    }
-    redis = {
-      rgname = "ukwest"
-      vnet    = "main"
-      subnet  = "main"
-      vm_size = "Standard_D2s_v3"
-      port    = ["22", "6379"]
-    }
-    rabbitmq = {
-      rgname = "ukwest"
-      vnet    = "main"
-      subnet  = "main"
-      vm_size = "Standard_D2s_v3"
-      port    = ["22", "5672"]
-    }*/
+# databases = {
+#     mongodb = {
+#       rgname  = "ukwest"
+#       vnet    = "main"
+#       subnet  = "main"
+#       vm_size = "Standard_D2s_v3"
+#       port    = ["22", "27017"]
+#     }
+    # mysql = {
+    #   rgname = "ukwest"
+    #   vnet    = "main"
+    #   subnet  = "main"
+    #   vm_size = "Standard_D2s_v3"
+    #   port    = ["22", "3306"]
+    # }
+    # redis = {
+    #   rgname = "ukwest"
+    #   vnet    = "main"
+    #   subnet  = "main"
+    #   vm_size = "Standard_D2s_v3"
+    #   port    = ["22", "6379"]
+    # }
+    # rabbitmq = {
+    #   rgname = "ukwest"
+    #   vnet    = "main"
+    #   subnet  = "main"
+    #   vm_size = "Standard_D2s_v3"
+    #   port    = ["22", "5672"]
+    # }
   }
 
 rg_name = {
@@ -67,18 +67,18 @@ rg_name = {
     }
 }
 
-/*vnet = {
-  main = {
-    rgname = "ukwest"
-    address_space = ["10.51.0.0/16"]
-    subnets = {
-      main = {
-        address_prefix = ["10.51.0.0/24"]
-      }
-
-    }
-  }
-}*/
+# vnet = {
+#   main = {
+#     rgname = "ukwest"
+#     address_space = ["10.51.0.0/16"]
+#     subnets = {
+#       main = {
+#         address_prefix = ["10.51.0.0/24"]
+#       }
+#
+#     }
+#   }
+# }
 
 /*aks = {
   aks-main-dev = {
@@ -108,5 +108,7 @@ rg_name = {
 des = {
   main-des = {
     rgname = "ukwest"
+    key-vault-name = "nareshdevops1218"
+    vault-key = "vk123"
   }
 }
