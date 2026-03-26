@@ -39,24 +39,6 @@ resource "azurerm_disk_encryption_set" "des" {
   }
 }
 
-/*resource "azurerm_key_vault_access_policy" "disk-acc-policy" {
-  key_vault_id = azurerm_key_vault.key-vault.id
-
-  tenant_id = azurerm_disk_encryption_set.des.identity[0].tenant_id
-  object_id = azurerm_disk_encryption_set.des.identity[0].principal_id
-
-  key_permissions = [
-    "Create",
-    "Delete",
-    "Get",
-    "Purge",
-    "Recover",
-    "Update",
-    "List",
-    "Decrypt",
-    "Sign",
-  ]
-}
 
 resource "azurerm_key_vault_access_policy" "user-acc-policy" {
   key_vault_id = azurerm_key_vault.key-vault.id
@@ -82,4 +64,4 @@ resource "azurerm_role_assignment" "example-disk" {
   scope                = azurerm_key_vault.key-vault.id
   role_definition_name = "Key Vault Crypto Service Encryption User"
   principal_id         = azurerm_disk_encryption_set.des.identity[0].principal_id
-}*/
+}
