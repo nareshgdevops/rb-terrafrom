@@ -55,7 +55,6 @@ module "des" {
   source                    = "./modules/des"
   location                  = module.resource_group[each.value["rgname"]].location
   resource_group_name       = module.resource_group[each.value["rgname"]].name
-  des                       = each.key
   key-vault-name            = each.value["key-vault-name"]
   vault-key                 = each.value["vault-key"]
 }
