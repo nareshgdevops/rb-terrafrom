@@ -78,7 +78,7 @@ module "databases" {
   type                      = "db"
   vm_size                   = each.value["vm_size"]
   port                      = each.value["port"]
-  #disk_encryption_set_id    = module.des[each.value["des"]].id
+  disk_encryption_set_id    = module.des[each.value["des"]].des_id
 }
 
 /*module "aks" {

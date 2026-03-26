@@ -10,5 +10,4 @@ variable "token" {}
 variable "type" {}
 variable "vm_size" {}
 variable "port" {}
-variable "subnet_cidr" {}
-#variable "disk_encryption_set_id" {}
+variable "disk_encryption_set_id" {}

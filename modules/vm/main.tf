@@ -96,7 +96,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   os_disk {
     caching                 = "ReadWrite"
     storage_account_type    = "Standard_LRS"
-    #disk_encryption_set_id  = var.disk_encryption_set_id
+    disk_encryption_set_id  = var.disk_encryption_set_id
   }
 
   source_image_id = var.storage_image_reference
