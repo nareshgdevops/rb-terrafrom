@@ -39,27 +39,27 @@ databases = {
       port    = ["22", "27017"]
       des     = "main-des"
     }
-    # mysql = {
-    #   rgname = "ukwest"
-    #   vnet    = "main"
-    #   subnet  = "main"
-    #   vm_size = "Standard_D2s_v3"
-    #   port    = ["22", "3306"]
-    # }
-    # redis = {
-    #   rgname = "ukwest"
-    #   vnet    = "main"
-    #   subnet  = "main"
-    #   vm_size = "Standard_D2s_v3"
-    #   port    = ["22", "6379"]
-    # }
-    # rabbitmq = {
-    #   rgname = "ukwest"
-    #   vnet    = "main"
-    #   subnet  = "main"
-    #   vm_size = "Standard_D2s_v3"
-    #   port    = ["22", "5672"]
-    # }
+    mysql = {
+      rgname = "ukwest"
+      vnet    = "main"
+      subnet  = "main"
+      vm_size = "Standard_D2s_v3"
+      port    = ["22", "3306"]
+    }
+    redis = {
+      rgname = "ukwest"
+      vnet    = "main"
+      subnet  = "main"
+      vm_size = "Standard_D2s_v3"
+      port    = ["22", "6379"]
+    }
+    rabbitmq = {
+      rgname = "ukwest"
+      vnet    = "main"
+      subnet  = "main"
+      vm_size = "Standard_D2s_v3"
+      port    = ["22", "5672"]
+    }
   }
 
 rg_name = {
@@ -81,28 +81,28 @@ vnet = {
   }
 }
 
-# aks = {
-#   aks-main-dev = {
-#     rgname = "ukwest"
-#     vnet    = "main"
-#     subnet  = "main"
-#     default_node_pool = {
-#       vm_size = "Standard_D2ls_v5"
-#       node_count = 1
-#     }
-#     app_node_pool = {
-#       roboshop = {
-#         vm_size = "Standard_D2ls_v5"
-#         min_count = 2
-#         max_count = 10
-#         auto_scaling_enabled = true
-#         node_labels = {
-#           "project/name" = "roboshop"
-#         }
-#       }
-#     }
-#   }
-# }
+aks = {
+  aks-main-dev = {
+    rgname = "ukwest"
+    vnet    = "main"
+    subnet  = "main"
+    default_node_pool = {
+      vm_size = "Standard_D2ls_v5"
+      node_count = 1
+    }
+    app_node_pool = {
+      roboshop = {
+        vm_size = "Standard_D2ls_v5"
+        min_count = 2
+        max_count = 10
+        auto_scaling_enabled = true
+        node_labels = {
+          "project/name" = "roboshop"
+        }
+      }
+    }
+  }
+}
 
 #bastion_nodes = ["172.16.0.100", "172.16.0.10"]
 

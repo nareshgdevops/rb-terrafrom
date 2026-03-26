@@ -48,9 +48,6 @@ resource "azurerm_disk_encryption_set" "des" {
   }
 }
 
-
-
-
 resource "azurerm_key_vault_access_policy" "for-disk" {
   key_vault_id = azurerm_key_vault.key-vault.id
 
