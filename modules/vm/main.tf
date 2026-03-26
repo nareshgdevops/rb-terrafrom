@@ -108,7 +108,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   # }
 }
 
-/*resource "null_resource" "ansible" {
+resource "null_resource" "ansible" {
   depends_on = [
     azurerm_linux_virtual_machine.vm
   ]
@@ -137,4 +137,4 @@ resource "azurerm_dns_a_record" "dns_record" {
   resource_group_name = var.dns_resource_group_name
   ttl                 = 3
   records             = [azurerm_network_interface.nic.private_ip_address]
-}*/
+}

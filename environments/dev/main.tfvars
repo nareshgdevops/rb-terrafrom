@@ -37,6 +37,7 @@ databases = {
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
       port    = ["22", "27017"]
+      des     = "main-des"
     }
     # mysql = {
     #   rgname = "ukwest"
