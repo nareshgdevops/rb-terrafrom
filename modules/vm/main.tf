@@ -7,13 +7,6 @@ terraform {
   }
 }
 
-/*resource "azurerm_public_ip" "publicip" {
-  name                = var.name
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  allocation_method   = "Static"
-}*/
-
 resource "azurerm_network_interface" "nic" {
   name                = var.name
   resource_group_name = var.resource_group_name
@@ -61,7 +54,7 @@ resource "azurerm_network_interface_security_group_association" "example" {
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
-resource "azurerm_virtual_machine" "vm" {
+/*resource "azurerm_virtual_machine" "vm" {
   name                  = var.name
   location              = var.location
   resource_group_name   = var.resource_group_name
@@ -88,11 +81,36 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile_linux_config {
     disable_password_authentication = false
   }
+}*/
+#=============
+resource "azurerm_linux_virtual_machine" "vm" {
+  name                  = var.name
+  location              = var.location
+  resource_group_name   = var.resource_group_name
+  size                  = var.vm_size
+  network_interface_ids = [azurerm_network_interface.nic.id]
+
+  admin_username = data.vault_generic_secret.roboshop-infra.data["username"]
+  admin_password = data.vault_generic_secret.roboshop-infra.data["password"]
+
+  os_disk {
+    caching                 = "ReadWrite"
+    storage_account_type    = "Standard_LRS"
+    #disk_encryption_set_id  = var.disk_encryption_set_id
+  }
+
+  source_image_id = var.storage_image_reference
+  # source_image_reference {
+  #   publisher = "Canonical"
+  #   offer     = "0001-com-ubuntu-server-jammy"
+  #   sku       = "22_04-lts"
+  #   version   = "latest"
+  # }
 }
 
-resource "null_resource" "ansible" {
+/*resource "null_resource" "ansible" {
   depends_on = [
-    azurerm_virtual_machine.vm
+    azurerm_linux_virtual_machine.vm
   ]
 
  provisioner "remote-exec" {
@@ -119,4 +137,4 @@ resource "azurerm_dns_a_record" "dns_record" {
   resource_group_name = var.dns_resource_group_name
   ttl                 = 3
   records             = [azurerm_network_interface.nic.private_ip_address]
-}
+}*/

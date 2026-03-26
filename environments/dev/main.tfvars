@@ -38,7 +38,7 @@ databases = {
       vm_size = "Standard_D2s_v3"
       port    = ["22", "27017"]
     }
-    mysql = {
+    /*mysql = {
       rgname = "ukwest"
       vnet    = "main"
       subnet  = "main"
@@ -58,7 +58,7 @@ databases = {
       subnet  = "main"
       vm_size = "Standard_D2s_v3"
       port    = ["22", "5672"]
-    }
+    }*/
   }
 
 rg_name = {
@@ -67,7 +67,7 @@ rg_name = {
     }
 }
 
-vnet = {
+/*vnet = {
   main = {
     rgname = "ukwest"
     address_space = ["10.51.0.0/16"]
@@ -78,9 +78,9 @@ vnet = {
 
     }
   }
-}
+}*/
 
-aks = {
+/*aks = {
   aks-main-dev = {
     rgname = "ukwest"
     vnet    = "main"
@@ -101,6 +101,12 @@ aks = {
       }
     }
   }
-}
+}*/
 
 #bastion_nodes = ["172.16.0.100", "172.16.0.10"]
+
+des = {
+  main-des = {
+    rgname = "ukwest"
+  }
+}

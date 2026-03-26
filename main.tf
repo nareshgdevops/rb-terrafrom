@@ -49,6 +49,14 @@ output "vnet" {
   type                      = "app"
 }*/
 
+module "des" {
+  for_each                  = var.des
+  name                      = each.key
+  source                    = "./modules/des"
+  location                  = module.resource_group[each.value["rgname"]].location
+  resource_group_name       = module.resource_group[each.value["rgname"]].name
+}
+
 module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
@@ -65,9 +73,10 @@ module "databases" {
   type                      = "db"
   vm_size                   = each.value["vm_size"]
   port                      = each.value["port"]
+  #disk_encryption_set_id    = module.des.each.value
 }
 
-module "aks" {
+/*module "aks" {
   source         = "./modules/aks"
   for_each       = var.aks
   name           = each.key
@@ -78,7 +87,7 @@ module "aks" {
   subnet_id      = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
   app_node_pool  = each.value["app_node_pool"]
   default_node_pool = each.value["default_node_pool"]
-}
+}*/
 
 # output "test" {
 #   value = nonsensitive(module.aks)
