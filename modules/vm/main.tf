@@ -92,7 +92,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   admin_username = data.vault_generic_secret.roboshop-infra.data["username"]
   admin_password = data.vault_generic_secret.roboshop-infra.data["password"]
-
+  disable_password_authentication = false
   os_disk {
     caching                 = "ReadWrite"
     storage_account_type    = "Standard_LRS"
