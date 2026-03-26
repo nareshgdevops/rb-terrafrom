@@ -59,6 +59,9 @@ module "des" {
   vault-key                 = each.value["vault-key"]
 }
 
+output "des_main" {
+  value = module.des.des_print
+}
 module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
