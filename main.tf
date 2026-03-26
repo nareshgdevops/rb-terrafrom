@@ -60,7 +60,7 @@ module "des" {
 }
 
 output "des_main" {
-  value = module.des.des_print
+  value = module.des
 }
 module "databases" {
   for_each                  = var.databases
