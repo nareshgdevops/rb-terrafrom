@@ -6,16 +6,25 @@ resource "azurerm_key_vault" "key-vault" {
   sku_name                    = "standard"
   enabled_for_disk_encryption = true
   purge_protection_enabled    = true
-}
 
-resource "azurerm_key_vault_access_policy" "user-acc-policy" {
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
+
+    key_permissions = [
+      "Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt",
+      "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"
+    ]
+  }
+}
+/*resource "azurerm_key_vault_access_policy" "user-acc-policy" {
   key_vault_id = azurerm_key_vault.key-vault.id
 
   tenant_id = data.azurerm_client_config.current.tenant_id
   object_id = data.azurerm_client_config.current.object_id
 
   key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
-}
+}*/
 
 resource "azurerm_key_vault_key" "vault-key" {
   name         = var.vault-key
@@ -23,9 +32,9 @@ resource "azurerm_key_vault_key" "vault-key" {
   key_type     = "RSA"
   key_size     = 2048
 
-  depends_on = [
+  /*depends_on = [
     azurerm_key_vault_access_policy.user-acc-policy
-  ]
+  ]*/
 
   key_opts = [
     "decrypt",
