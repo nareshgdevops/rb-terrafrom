@@ -6,7 +6,7 @@ output "current_object_id" {
   value = data.azurerm_client_config.current.object_id
 }
 
-resource "azurerm_key_vault" "key-vault" {
+/*resource "azurerm_key_vault" "key-vault" {
   name                        = var.key-vault-name
   location                    = var.location
   resource_group_name         = var.resource_group_name
@@ -34,7 +34,7 @@ resource "azurerm_key_vault" "key-vault" {
   key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
 }*/
 
-resource "time_sleep" "wait_for_kv_permissions" {
+/*resource "time_sleep" "wait_for_kv_permissions" {
   depends_on = [azurerm_key_vault.key-vault]
   create_duration = "30s"
 }
@@ -77,4 +77,4 @@ resource "azurerm_key_vault_access_policy" "for-disk" {
   object_id = azurerm_disk_encryption_set.des.identity.0.principal_id
 
   key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
-}
+}*/

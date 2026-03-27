@@ -59,7 +59,7 @@ module "des" {
   vault-key                 = each.value["vault-key"]
 }
 
-module "databases" {
+/*module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
@@ -89,7 +89,7 @@ module "aks" {
   subnet_id      = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
   app_node_pool  = each.value["app_node_pool"]
   default_node_pool = each.value["default_node_pool"]
-}
+}*/
 
 # output "test" {
 #   value = nonsensitive(module.aks)
