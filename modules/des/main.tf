@@ -32,9 +32,9 @@ resource "azurerm_key_vault_key" "vault-key" {
   key_type     = "RSA"
   key_size     = 2048
 
-  /*depends_on = [
-    azurerm_key_vault_access_policy.user-acc-policy
-  ]*/
+  depends_on = [
+    azurerm_key_vault.key-vault
+  ]
 
   key_opts = [
     "decrypt",
