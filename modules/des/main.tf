@@ -1,3 +1,11 @@
+output "current_client_id" {
+  value = data.azurerm_client_config.current.client_id
+}
+
+output "current_object_id" {
+  value = data.azurerm_client_config.current.object_id
+}
+
 resource "azurerm_key_vault" "key-vault" {
   name                        = var.key-vault-name
   location                    = var.location
