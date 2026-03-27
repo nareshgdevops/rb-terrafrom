@@ -26,6 +26,11 @@ resource "azurerm_key_vault" "key-vault" {
   key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
 }*/
 
+resource "time_sleep" "wait_for_kv_permissions" {
+  depends_on = [azurerm_key_vault.key-vault]
+  create_duration = "30s"
+}
+
 resource "azurerm_key_vault_key" "vault-key" {
   name         = var.vault-key
   key_vault_id = azurerm_key_vault.key-vault.id
@@ -33,7 +38,7 @@ resource "azurerm_key_vault_key" "vault-key" {
   key_size     = 2048
 
   depends_on = [
-    azurerm_key_vault.key-vault
+    time_sleep.wait_for_kv_permissions
   ]
 
   key_opts = [
