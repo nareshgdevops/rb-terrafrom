@@ -60,11 +60,11 @@ module "des" {
 }
 
 output "current_config" {
-  value = module.des.current_client_id
+  value = module.des
 }
 
 output "current_config1" {
-  value = module.des.current_object_id
+  value = module.des
 }
 /*module "databases" {
   for_each                  = var.databases
