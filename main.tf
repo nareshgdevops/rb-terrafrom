@@ -59,6 +59,13 @@ module "des" {
   vault-key                 = each.value["vault-key"]
 }
 
+output "current_config" {
+  value = module.des.current_client_id
+}
+
+output "current_config1" {
+  value = module.des.current_object_id
+}
 /*module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
