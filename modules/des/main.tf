@@ -58,6 +58,11 @@ resource "azurerm_key_vault_key" "vault-key" {
     "verify",
     "wrapKey",
   ]
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
 }
 
 resource "azurerm_disk_encryption_set" "des" {
