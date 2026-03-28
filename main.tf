@@ -17,10 +17,6 @@ module "vnet" {
   env                     = var.env
 }
 
-output "vnet" {
-  value = module.vnet["main"].subnet["main"].id
-}
-
 ####OUTPUT OF RESOURCE GROUP AS BELOW########
 /*output "rgtest" {
   value = module.resource_group
@@ -66,7 +62,7 @@ output "current_config" {
 output "current_config1" {
   value = module.des
 }
-/*module "databases" {
+module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
@@ -96,7 +92,7 @@ module "aks" {
   subnet_id      = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
   app_node_pool  = each.value["app_node_pool"]
   default_node_pool = each.value["default_node_pool"]
-}*/
+}
 
 # output "test" {
 #   value = nonsensitive(module.aks)
