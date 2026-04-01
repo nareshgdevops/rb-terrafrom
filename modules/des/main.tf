@@ -52,7 +52,8 @@ resource "azurerm_disk_encryption_set" "des" {
   name                  = var.name
   location              = var.location
   resource_group_name   = var.resource_group_name
-  key_vault_key_id      = "https://nareshdevops1218.vault.azure.net/keys/vk123/3a3ac2cefead47d2a2a0fbd0683a8cc0"
+  //key_vault_key_id      = "https://nareshdevops1218.vault.azure.net/keys/vk123/3a3ac2cefead47d2a2a0fbd0683a8cc0"
+  key_vault_key_id      = var.vault-key
 
   identity {
     type = "SystemAssigned"
