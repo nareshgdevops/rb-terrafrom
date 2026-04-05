@@ -62,7 +62,7 @@ output "current_config" {
 output "current_config1" {
   value = module.des
 }
-module "databases" {
+/*module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
@@ -79,7 +79,7 @@ module "databases" {
   vm_size                   = each.value["vm_size"]
   port                      = each.value["port"]
   disk_encryption_set_id    = module.des["main-des"].des_id
-}
+}*/
 
 module "aks" {
   source         = "./modules/aks"
