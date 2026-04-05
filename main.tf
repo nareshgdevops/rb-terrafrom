@@ -63,6 +63,7 @@ output "current_config1" {
   value = module.des
 }
 module "databases" {
+  depends_on                = [module.des]
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
