@@ -95,7 +95,7 @@ module "aks" {
   default_node_pool = each.value["default_node_pool"]
 }*/
 
-module "mysql-fs" {
+module "mysql-flexi-server" {
   source         = "./modules/mysql"
   for_each       = var.mysql-fs
   name           = each.key
