@@ -127,7 +127,7 @@ des = {
 }
 
 mysql-fs = {
-  main = {
+  main-dev = {
     rgname = "ukwest"
     vnet   = "main"
     subnet = "main"

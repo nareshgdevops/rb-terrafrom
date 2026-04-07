@@ -1,5 +1,5 @@
 resource "azurerm_private_dns_zone" "dns_mysql" {
-  name                = "dns.mysql.database.azure.com"
+  name                = "roboshopnar.mysql.database.azure.com"
   resource_group_name = var.rg_name
 }
 
@@ -11,7 +11,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_vnet_link" {
 }
 
 resource "azurerm_mysql_flexible_server" "mysql_fs" {
-  name                   = var.name
+  name                   = "${var.name}-${var.env}"
   resource_group_name    = var.rg_name
   location               = var.location
   administrator_login    = "psqladmin"

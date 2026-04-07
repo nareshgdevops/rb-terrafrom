@@ -104,6 +104,7 @@ module "mysql-flexi-server" {
   #env            = var.env
   vnet_id        = module.vnet[each.value["vnet"]].vnet_id
   subnet_id      = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
+  env            = var.env
 }
 
 output "root_vnet_id" {
