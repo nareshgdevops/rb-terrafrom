@@ -117,5 +117,6 @@ mysql-fs = {
   main = {
     rgname = "ukwest"
     vnet   = "main"
+    subnet = "main"
   }
 }
