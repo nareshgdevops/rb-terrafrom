@@ -112,3 +112,9 @@ des = {
     vault-key = "vk123"
   }
 }
+
+mysql-fs = {
+  main = {
+    rgname = "ukwest"
+  }
+}

@@ -45,7 +45,7 @@ module "vnet" {
   type                      = "app"
 }*/
 
-module "des" {
+/*module "des" {
   for_each                  = var.des
   name                      = each.key
   source                    = "./modules/des"
@@ -93,8 +93,19 @@ module "aks" {
   subnet_id      = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
   app_node_pool  = each.value["app_node_pool"]
   default_node_pool = each.value["default_node_pool"]
-}
+}*/
 
-# output "test" {
-#   value = nonsensitive(module.aks)
-# }
+/*module "mysql-fs" {
+  source         = "./modules/mysql"
+  for_each       = var.mysql-fs
+  name           = each.key
+  rg_name        = module.resource_group[each.value["rgname"]].name
+  location       = module.resource_group[each.value["rgname"]].location
+  #env            = var.env
+  vnet_id        = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
+
+}*/
+
+output "mysqlfs" {
+  value = module.vnet.vnet
+}
