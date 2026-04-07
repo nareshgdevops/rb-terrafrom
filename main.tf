@@ -95,7 +95,7 @@ module "aks" {
   default_node_pool = each.value["default_node_pool"]
 }*/
 
-module "mysql-fs" {
+/*module "mysql-fs" {
   source         = "./modules/mysql"
   for_each       = var.mysql-fs
   name           = each.key
@@ -104,7 +104,7 @@ module "mysql-fs" {
   #env            = var.env
   vnet_id        = module.vnet[each.value["vnet"]].vnet_id
   subnet_id      = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
-}
+}*/
 
 output "root_vnet_id" {
   value = module.vnet["main"].vnet_id
