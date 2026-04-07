@@ -14,4 +14,3 @@ variable "vnet" {}
 variable "tools_vnet_resource_id" {}
 variable "des" {}
 variable "mysql-fs" {}
-variable "vnet_id" {}
