@@ -107,5 +107,5 @@ module "aks" {
 }*/
 
 output "root_vnet_id" {
-  value = module.vnet["main"]
+  value = module.vnet["main"].vnet_id
 }
