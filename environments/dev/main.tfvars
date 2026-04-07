@@ -34,28 +34,28 @@ databases = {
     mongodb = {
       rgname  = "ukwest"
       vnet    = "main"
-      subnet  = "main"
+      subnet  = "vm"
       vm_size = "Standard_D2s_v3"
       port    = ["22", "27017"]
     }
     mysql = {
       rgname = "ukwest"
       vnet    = "main"
-      subnet  = "main"
+      subnet  = "vm"
       vm_size = "Standard_D2s_v3"
       port    = ["22", "3306"]
     }
     redis = {
       rgname = "ukwest"
       vnet    = "main"
-      subnet  = "main"
+      subnet  = "vm"
       vm_size = "Standard_D2s_v3"
       port    = ["22", "6379"]
     }
     rabbitmq = {
       rgname = "ukwest"
       vnet    = "main"
-      subnet  = "main"
+      subnet  = "vm"
       vm_size = "Standard_D2s_v3"
       port    = ["22", "5672"]
     }
@@ -74,8 +74,21 @@ vnet = {
     subnets = {
       main = {
         address_prefix = ["10.51.0.0/24"]
+        delegation = {
+          mysql_delegation = {
+            name    = "Microsoft.DBforMySQL/flexibleServers"
+            actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+          }
+        }
       }
-
+      aks = {
+        address_prefix = ["10.51.1.0/24"]
+        delegations = {}
+      }
+      vm = {
+        address_prefix = ["10.51.2.0/24"]
+        delegations = {}
+      }
     }
   }
 }
@@ -84,7 +97,7 @@ aks = {
   aks-main-dev = {
     rgname = "ukwest"
     vnet    = "main"
-    subnet  = "main"
+    subnet  = "aks"
     default_node_pool = {
       vm_size = "Standard_D2ls_v5"
       node_count = 1
