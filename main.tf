@@ -106,6 +106,6 @@ module "aks" {
 
 }*/
 
-output "mysqlfs" {
-  value = module.vnet["main"].vnet
+output "root_vnet_id" {
+  value = module.vnet["main"]
 }
