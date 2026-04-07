@@ -45,7 +45,7 @@ module "vnet" {
   type                      = "app"
 }*/
 
-/*module "des" {
+module "des" {
   for_each                  = var.des
   name                      = each.key
   source                    = "./modules/des"
@@ -93,7 +93,7 @@ module "aks" {
   subnet_id      = module.vnet[each.value["vnet"]].subnet[each.value["subnet"]].id
   app_node_pool  = each.value["app_node_pool"]
   default_node_pool = each.value["default_node_pool"]
-}*/
+}
 
 module "mysql-flexi-server" {
   source         = "./modules/mysql"
