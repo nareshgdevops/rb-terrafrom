@@ -19,7 +19,7 @@ resource "azurerm_mysql_flexible_server" "mysql_fs" {
   backup_retention_days  = 7
   delegated_subnet_id    = var.subnet_id
   private_dns_zone_id    = azurerm_private_dns_zone.dns_mysql.id
-  sku_name               = "GP_Standard_D2ds_v4"
+  # sku_name               = "GP_Standard_D2ds_v4"
 
   depends_on = [azurerm_private_dns_zone_virtual_network_link.dns_vnet_link]
 }
